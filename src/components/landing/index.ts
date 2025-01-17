@@ -1,0 +1,6 @@
+export * from './hero'
+export * from './demo'
+export * from './how-it-works'
+export * from './features-section'
+export * from './features-section-2'
+export * from './how-it-works-2'
