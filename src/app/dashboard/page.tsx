@@ -10,7 +10,6 @@ import {
   Channel,
 } from 'stream-chat-react';
 import 'stream-chat-react/dist/css/v2/index.css';
-import { Button } from '@/components/ui/button';
 
 const chatClient = StreamChat.getInstance("x9v4sqj4t9qf");
 
