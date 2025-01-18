@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .upload-container {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .preview-container {
+            margin-top: 20px;
+        }
+
+        .preview-image {
+            max-width: 300px;
+            max-height: 300px;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .file-input {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Upload Test</h1>
+    
+    <div class="upload-container">
+        <form id="uploadForm">
+            <div class="file-input">
+                <input type="file" id="fileInput" accept="image/*" required>
+            </div>
+            <button type="submit" id="submitButton">Upload Image</button>
+        </form>
+        
+        <div class="loading" id="loading">
+            Uploading... Please wait...
+        </div>
+        
+        <div class="status" id="status"></div>
+        
+        <div class="preview-container">
+            <h3>Preview:</h3>
+            <img id="previewImage" class="preview-image" alt="Preview">
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        const fileInput = document.getElementById('fileInput');
+        const submitButton = document.getElementById('submitButton');
+        const loading = document.getElementById('loading');
+        const status = document.getElementById('status');
+        const previewImage = document.getElementById('previewImage');
+
+        // Preview image before upload
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const file = fileInput.files[0];
+            if (!file) {
+                showStatus('Please select a file', 'error');
+                return;
+            }
+
+            // Prepare FormData
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Update UI for upload
+            submitButton.disabled = true;
+            loading.style.display = 'block';
+            status.className = 'status';
+            status.textContent = '';
+
+            try {
+                const response = await fetch('http://127.0.0.1:3000/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                console.log(data);
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Upload failed');
+                }
+
+                // Show success
+                showStatus('Upload successful! Image URL: ' + data.imageUrl, 'success');
+                
+                // Display the uploaded image
+                previewImage.src = data.imageUrl;
+                previewImage.style.display = 'block';
+                
+                // Reset form
+                form.reset();
+
+            } catch (error) {
+                showStatus(error.message, 'error');
+            } finally {
+                submitButton.disabled = false;
+                loading.style.display = 'none';
+            }
+        });
+
+        function showStatus(message, type) {
+            status.textContent = message;
+            status.className = 'status ' + type;
+        }
+    </script>
+</body>
+</html>
