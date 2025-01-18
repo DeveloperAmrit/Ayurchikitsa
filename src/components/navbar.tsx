@@ -43,7 +43,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b bg-white flex justify-center">
       <div className="container flex h-16 items-center justify-between mx-3">
         <Link href="/" className="text-xl font-semibold tracking-tight">
-          ViralReel AI
+          Ayurchikitsa
         </Link>
         <nav className="flex items-center gap-4">
           <NavLink to="/" children="Home" />

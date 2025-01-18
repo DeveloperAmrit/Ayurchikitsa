@@ -3,22 +3,22 @@ import { StickyScroll } from "@/components/landing/sticky-scroll-reveal";
 const content = [
     {
         title: "Step 1",
-        description: "Select a template",
+        description: "Create a profile",
         content: <div>Step 1</div>
     },
     {
         title: "Step 2",
-        description: "Create content with AI",
+        description: "Go to patients and select a patient",
         content: <div>Step 2</div>
     },
     {
         title: "Step 3",
-        description: "Generate n number of videos",
+        description: "Accept the patient",
         content: <div>Step 3</div>
     },
     {
         title: "Step 4",
-        description: "Schedule video for months",
+        description: "See AI analysed submissions and give consulatation",
         content: <div>Step 4</div>
     }
 ]
