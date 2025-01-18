@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-full bg-gray-50`}
       >
-        <ClerkProvider frontendApi={clerkFrontendApi}>
+        <ClerkProvider publishableKey={clerkFrontendApi}>
           {!hideNavbarPaths.includes(pathname) && <Navbar />}
           <div>{children}</div>
         </ClerkProvider>

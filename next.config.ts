@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    
+    domains: ['res.cloudinary.com'],
     remotePatterns: [
       {
         hostname: 'framerusercontent.com',

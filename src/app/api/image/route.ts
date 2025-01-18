@@ -49,18 +49,14 @@ export async function GET(request: NextRequest) {
 
   try {
     const { searchParams } = new URL(request.url);
-    const userId = searchParams.get('userId');
-
-    if (!userId) {
-      return NextResponse.json({ error: 'userId is required' }, { status: 400 });
-    }
+    
 
     // Connect to MongoDB
     const client = await MongoClient.connect(process.env.MONGODB_URI!);
     const db = client.db('images');
 
     // Retrieve images for the specified userId
-    const images = await db.collection('image').find({ userId }).toArray();
+    const images = await db.collection('image').find({ userId: "patient_1" }).toArray();
 
     await client.close();
 
