@@ -34,6 +34,9 @@ const nextConfig: NextConfig = {
       {
         hostname: 'cdn.jsdelivr.net',
       },
+      {
+        hostname: 'd1.awsstatic.com',
+      },
     ],
   },
 };

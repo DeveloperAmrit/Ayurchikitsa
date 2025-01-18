@@ -30,11 +30,11 @@ export function Hero() {
       
       <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[5rem]">
-          Effortlessly create <br />
-          <span className="text-orange-400">viral-tested</span> social content
+          Welcome to<br />
+          <span className="text-orange-400">Ayurchikitsa</span> health care
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl">
-          ViralReel AI creates viral-tested social content, scheduled to post on your social media accounts.
+          Interact with your patient with more effiicient way along with AI integrated health care system.
         </p>
         {isSuccess ? (
           <div className="flex items-center gap-2 text-green-600">
@@ -42,15 +42,6 @@ export function Hero() {
             <span>Thanks for subscribing!</span>
           </div>
         ) : (
-          <form className="flex w-full max-w-sm gap-2" action={handleSubmit}>
-            <Input 
-              name="email"
-              type="email" 
-              placeholder="Email Address" 
-              className="bg-secondary"
-              required
-              disabled={isLoading}
-            />
             <Button 
               type="submit" 
               variant="default" 
@@ -62,10 +53,9 @@ export function Hero() {
                   <span className="loader w-4 h-4"></span>
                 </>
               ) : (
-                'Get Access'
+                'Sign up'
               )}
             </Button>
-          </form>
         )}
         {/* <div className="relative w-full max-w-2xl h-[400px] mt-8">
           <Image
