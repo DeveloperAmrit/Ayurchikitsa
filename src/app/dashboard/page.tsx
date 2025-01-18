@@ -1,6 +1,12 @@
 "use client";
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { StreamChat, Channel as ChannelType } from 'stream-chat';
+=======
+import React, { useEffect, useState } from 'react'
+import { BouncingBallsLoader } from '@/components/BouncingBallsLoader';
+import { StreamChat, Channel as ChannelType } from 'stream-chat'
+>>>>>>> d68ed63e362fd9f6cfeabb6125cd540121e3f550
 import {
   Chat as StreamChatComponent,
   MessageList,
@@ -13,9 +19,40 @@ import { Button } from '@/components/ui/button';
 
 const chatClient = StreamChat.getInstance("x9v4sqj4t9qf");
 
+<<<<<<< HEAD
 export default function App() {
   const [activeSection, setActiveSection] = useState<React.ReactNode>(<ChatSection />);
 
+=======
+const chatClient = StreamChat.getInstance("x9v4sqj4t9qf")
+
+export default function ExpertChat() {
+  const [channel, setChannel] = useState<ChannelType | null>(null)
+
+  useEffect(() => {
+    const connectUser = async () => {
+      await chatClient.connectUser(
+        { id: "expert_1" },
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZXhwZXJ0XzEifQ.lUHvPjwS5HqacDkv6P_1ThJ-vROVQF5IjrRE5LzYv7I" // Generate this token on your server
+      )
+
+      const channel = chatClient.channel("messaging", "health_consultation", {
+        members: ["patient_1", "expert_1"],
+      })
+
+      await channel.watch()
+      setChannel(() => channel)
+    }
+
+    connectUser()
+
+    return () => {
+      chatClient.disconnectUser()
+    }
+  }, [])
+
+  if (!channel) return <BouncingBallsLoader />;
+>>>>>>> d68ed63e362fd9f6cfeabb6125cd540121e3f550
   return (
     <div className="flex h-screen">
       <VerticalNav setActiveSection={setActiveSection} />

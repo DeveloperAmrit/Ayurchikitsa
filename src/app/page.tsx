@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="justify-center flex flex-col items-center">
-      <Navbar />
       <Hero />
       {/* <FeatureEnabled featureFlag="DEMO_SECTION"> */}
         <DemoSection />
