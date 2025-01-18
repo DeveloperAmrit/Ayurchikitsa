@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react'
+import { BouncingBallsLoader } from '@/components/BouncingBallsLoader';
 import { StreamChat, Channel as ChannelType } from 'stream-chat'
 import {
   Chat,
@@ -26,9 +27,9 @@ export default function ExpertChat() {
       const channel = chatClient.channel("messaging", "health_consultation", {
         members: ["patient_1", "expert_1"],
       })
-      
+
       await channel.watch()
-    setChannel(() => channel)
+      setChannel(() => channel)
     }
 
     connectUser()
@@ -38,8 +39,7 @@ export default function ExpertChat() {
     }
   }, [])
 
-  if (!channel) return <div>Loading...</div>
-
+  if (!channel) return <BouncingBallsLoader />;
   return (
     <Chat client={chatClient}>
       <Channel channel={channel}>
