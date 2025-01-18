@@ -1,5 +1,4 @@
-// app/api/token/route.js
-
+"use server";
 import { StreamChat } from 'stream-chat';
 
 export async function POST(request: { json: () => PromiseLike<{ userId: any; }> | { userId: any; }; }) {
@@ -15,7 +14,8 @@ export async function POST(request: { json: () => PromiseLike<{ userId: any; }> 
 
     // Initialize the Stream client with API key and secret
     const apiKey = process.env.CHAT_API_KEY as string;
-    const apiSecret = process.env.STREAM_API_SECRET as string;
+    const apiSecret = process.env.CHAT_API_SECRET as string;
+    console.log('apiKey:', process.env.CHAT_API_SECRET as string);
 
     if (!apiKey || !apiSecret) {
         return new Response(JSON.stringify({ error: 'API key and secret are required' }), {
