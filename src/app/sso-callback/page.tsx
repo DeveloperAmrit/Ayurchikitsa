@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ClerkProvider, RedirectToSignIn } from "@clerk/nextjs";
+import { BouncingBallsLoader } from "@/components/BouncingBallsLoader";
 
 const SSOCallback = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const SSOCallback = () => {
 
   return (
     <div>
-      <h2>Loading...</h2>
+      <BouncingBallsLoader />
     </div>
   );
 };

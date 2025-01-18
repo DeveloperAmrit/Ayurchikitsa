@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ClerkProvider, SignIn, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-
+import { BouncingBallsLoader } from "./BouncingBallsLoader";
 interface NavLinkProps {
   to: string;
   children: React.ReactNode;
@@ -37,7 +37,7 @@ export function Navbar() {
     setLoading(false);
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <BouncingBallsLoader />
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white flex justify-center">
@@ -46,6 +46,7 @@ export function Navbar() {
           ViralReel AI
         </Link>
         <nav className="flex items-center gap-4">
+          <NavLink to="/" children="Home" />
           <NavLink to="/about" children="About" />
           <NavLink to="/contact" children="Contact" />
           <ClerkProvider frontendApi={clerkFrontendApi}>
