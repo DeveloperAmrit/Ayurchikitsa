@@ -7,17 +7,17 @@ interface Props {
 }
 
 export function FeatureEnabled({ children, featureFlag, disabled }: Props) {
-    if (disabled) {
-        return null;
-    }
+    // if (disabled) {
+    //     return null;
+    // }
 
-    const flag = FEATURE_FLAGS[featureFlag];
+    // const flag = FEATURE_FLAGS[featureFlag];
 
-    if (flag.enabled) {
+    // if (flag.enabled) {
         return <>{children}</>;
-    }
+    // }
 
-    return null;
+    // return null;
 }
 
 

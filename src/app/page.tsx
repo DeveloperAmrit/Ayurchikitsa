@@ -18,9 +18,9 @@ export default function Home() {
       <FeatureEnabled featureFlag="FEATURES_SECTION_2">
         <FeaturesSection2 />
       </FeatureEnabled>
-      <FeatureEnabled featureFlag="FEATURES_SECTION">
+      {/* <FeatureEnabled featureFlag="FEATURES_SECTION">
         <FeaturesSection />
-      </FeatureEnabled>
+      </FeatureEnabled> */}
       <FAQSection />
       <div className="w-full flex-col justify-center items-center flex p-4 mt-48">
         <div className="w-full p-4 py-8 md:py-12 flex-col justify-center items-center gap-[15px] flex bg-orange-100 rounded-xl md:rounded-[2rem]">
