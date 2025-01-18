@@ -11,13 +11,18 @@ import { Channel } from 'stream-chat-react'
 import 'stream-chat-react/dist/css/v2/index.css'
 
 
-const chatClient = StreamChat.getInstance("x9v4sqj4t9qf")
+const chatApiKey = process.env.CHAT_API_KEY || "x9v4sqj4t9qf";
+if (!chatApiKey) {
+  throw new Error("CHAT_API_KEY is not defined");
+}
+const chatClient = StreamChat.getInstance(chatApiKey);
 
 export default function ExpertChat() {
   const [channel, setChannel] = useState<ChannelType | null>(null)
 
   useEffect(() => {
     const connectUser = async () => {
+
       await chatClient.connectUser(
         { id: "expert_1" },
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZXhwZXJ0XzEifQ.lUHvPjwS5HqacDkv6P_1ThJ-vROVQF5IjrRE5LzYv7I" // Generate this token on your server
