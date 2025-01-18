@@ -14,7 +14,7 @@ export default function Home() {
         <HowItWorks2 />
       {/* </FeatureEnabled> */}
       {/* <FeatureEnabled featureFlag="FEATURES_SECTION_2"> */}
-        <FeaturesSection2 />
+        {/* <FeaturesSection2 /> */}
       {/* </FeatureEnabled> */}
       {/* <FeatureEnabled featureFlag="FEATURES_SECTION">
         <FeaturesSection />
@@ -24,10 +24,10 @@ export default function Home() {
         <div className="w-full p-4 py-8 md:py-12 flex-col justify-center items-center gap-[15px] flex bg-orange-100 rounded-xl md:rounded-[2rem]">
           <div className="w-full px-4 md:px-20 lg:px-32 flex-col justify-start items-center gap-2.5 flex">
             <div className="text-center text-black text-2xl md:text-3xl lg:text-5xl font-normal font-['Inter'] leading-normal md:leading-[57.60px]">
-              Create stunning social content real-time
+              Ready to get started?
             </div>
             <div className="text-center text-slate-700 text-lg md:text-xl lg:text-2xl font-normal font-['Inter'] leading-relaxed md:leading-9">
-              Produce engaging videos for your audience effortlessly and efficiently.
+              Engage with your patients in a whole new way.
             </div>
           </div>
           <Link href="/#hero" className="h-10 px-4 md:px-6 lg:px-8 py-2 bg-white rounded-lg shadow justify-center items-center inline-flex hover:bg-gray-100 transition-colors">
