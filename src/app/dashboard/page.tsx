@@ -37,7 +37,7 @@ function VerticalNav() {
         <div className="rounded-full bg-primary p-1">
           {/* Logo SVG */}
         </div>
-        <a className="text-lg font-semibold" href='/'>Ayurchikitsa</>
+        <a className="text-lg font-semibold" href='/'>Ayurchikitsa</a>
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
         <NavItem to="/dashboard">Chat</NavItem>
