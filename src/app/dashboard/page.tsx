@@ -1,12 +1,7 @@
 "use client";
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { StreamChat, Channel as ChannelType } from 'stream-chat';
-=======
-import React, { useEffect, useState } from 'react'
-import { BouncingBallsLoader } from '@/components/BouncingBallsLoader';
-import { StreamChat, Channel as ChannelType } from 'stream-chat'
->>>>>>> d68ed63e362fd9f6cfeabb6125cd540121e3f550
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   Chat as StreamChatComponent,
   MessageList,
@@ -19,81 +14,45 @@ import { Button } from '@/components/ui/button';
 
 const chatClient = StreamChat.getInstance("x9v4sqj4t9qf");
 
-<<<<<<< HEAD
 export default function App() {
-  const [activeSection, setActiveSection] = useState<React.ReactNode>(<ChatSection />);
-
-=======
-const chatClient = StreamChat.getInstance("x9v4sqj4t9qf")
-
-export default function ExpertChat() {
-  const [channel, setChannel] = useState<ChannelType | null>(null)
-
-  useEffect(() => {
-    const connectUser = async () => {
-      await chatClient.connectUser(
-        { id: "expert_1" },
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZXhwZXJ0XzEifQ.lUHvPjwS5HqacDkv6P_1ThJ-vROVQF5IjrRE5LzYv7I" // Generate this token on your server
-      )
-
-      const channel = chatClient.channel("messaging", "health_consultation", {
-        members: ["patient_1", "expert_1"],
-      })
-
-      await channel.watch()
-      setChannel(() => channel)
-    }
-
-    connectUser()
-
-    return () => {
-      chatClient.disconnectUser()
-    }
-  }, [])
-
-  if (!channel) return <BouncingBallsLoader />;
->>>>>>> d68ed63e362fd9f6cfeabb6125cd540121e3f550
   return (
-    <div className="flex h-screen">
-      <VerticalNav setActiveSection={setActiveSection} />
-      <div className="flex-1">{activeSection}</div>
-    </div>
+    <Router>
+      <div className="flex h-screen">
+        <VerticalNav />
+        <div className="flex-1">
+          <Routes>
+            <Route path="/dashboard" element={<ChatSection />} />
+            <Route path="/upload" element={<UploadSection />} />
+            {/* Add other routes if necessary */}
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
-function VerticalNav({ setActiveSection }: { setActiveSection: (section: React.ReactNode) => void }) {
+function VerticalNav() {
   return (
     <nav className="flex h-screen w-64 flex-col border-r bg-background">
       <div className="flex items-center gap-2 p-6">
         <div className="rounded-full bg-primary p-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6 text-primary-foreground"
-          >
-            <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
-          </svg>
+          {/* Logo SVG */}
         </div>
-        <span className="text-lg font-semibold">AppName</span>
+        <span className="text-lg font-semibold">Ayurchikitsa</span>
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <NavItem onClick={() => setActiveSection(<ChatSection />)}>Chat</NavItem>
-        <NavItem onClick={() => setActiveSection(<UploadSection />)}>Upload</NavItem>
+        <NavItem to="/dashboard">Chat</NavItem>
+        <NavItem to="/upload">Upload</NavItem>
       </div>
     </nav>
   );
 }
 
-function NavItem({ onClick, children }: { onClick: () => void; children: React.ReactNode }) {
+function NavItem({ to, children }: { to: string; children: React.ReactNode }) {
   return (
-    <Button onClick={onClick} variant="ghost" className="w-full justify-start">
+    <a href={to} className="w-full justify-start btn btn-ghost">
       {children}
-    </Button>
+    </a>
   );
 }
 
