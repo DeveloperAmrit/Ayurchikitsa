@@ -1,20 +1,20 @@
 "use client";
 import React, { useEffect, useState } from 'react'
-import { StreamChat } from 'stream-chat'
+import { StreamChat, Channel as ChannelType } from 'stream-chat'
 import {
   Chat,
-  Channel,
   MessageList,
   MessageInput,
   Window,
 } from 'stream-chat-react'
+import { Channel } from 'stream-chat-react'
 import 'stream-chat-react/dist/css/v2/index.css'
 
 
 const chatClient = StreamChat.getInstance("x9v4sqj4t9qf")
 
 export default function ExpertChat() {
-  const [channel, setChannel] = useState(null)
+  const [channel, setChannel] = useState<ChannelType | null>(null)
 
   useEffect(() => {
     const connectUser = async () => {
@@ -28,7 +28,7 @@ export default function ExpertChat() {
       })
       
       await channel.watch()
-      setChannel(channel)
+    setChannel(() => channel)
     }
 
     connectUser()

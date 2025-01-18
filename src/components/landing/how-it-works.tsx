@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useScroll } from "framer-motion"
+import Image from "next/image"
 import { Card } from "@/components/ui/card"
 
 export function HowItWorks() {
@@ -155,9 +156,12 @@ export function HowItWorks() {
 
                 {/* Placeholder for illustrations */}
                 <div className="w-full h-full flex items-center justify-center opacity-20">
-                  <img
+                  <Image
                     src={step.image}
                     alt=""
+                    layout="responsive"
+                    width={720}
+                    height={380}
                     className="max-w-full h-auto"
                   />
                 </div>

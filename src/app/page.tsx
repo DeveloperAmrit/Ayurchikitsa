@@ -1,5 +1,4 @@
-import { Navbar, Hero, DemoSection,  FeaturesSection, FeaturesSection2, HowItWorks2 } from "@/components";
-import { FeatureEnabled } from "@/components/feature/FeatureEnabled";
+import { Navbar, Hero, DemoSection, FeaturesSection2, HowItWorks2 } from "@/components";
 import { FAQSection } from "@/components/landing/faq-section";
 import Link from "next/link";
 
@@ -8,16 +7,16 @@ export default function Home() {
     <main className="justify-center flex flex-col items-center">
       <Navbar />
       <Hero />
-      <FeatureEnabled featureFlag="DEMO_SECTION">
+      {/* <FeatureEnabled featureFlag="DEMO_SECTION"> */}
         <DemoSection />
-      </FeatureEnabled>
+      {/* </FeatureEnabled> */}
       {/* <HowItWorks /> */}
-      <FeatureEnabled featureFlag="HOW_IT_WORKS_2">
+      {/* <FeatureEnabled featureFlag="HOW_IT_WORKS_2"> */}
         <HowItWorks2 />
-      </FeatureEnabled>
-      <FeatureEnabled featureFlag="FEATURES_SECTION_2">
+      {/* </FeatureEnabled> */}
+      {/* <FeatureEnabled featureFlag="FEATURES_SECTION_2"> */}
         <FeaturesSection2 />
-      </FeatureEnabled>
+      {/* </FeatureEnabled> */}
       {/* <FeatureEnabled featureFlag="FEATURES_SECTION">
         <FeaturesSection />
       </FeatureEnabled> */}
